@@ -3,17 +3,15 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Navb from './components/Nav';
 import Emp from './pages/Employee';
-import Title from './components/Title';
 import Users from './pages/Users';
 
 function App() {
   return (
-    <div>
+    <div className='container'>
       <Navb/>
-      <Title/>
       <Routes>
           <Route path='/' element={<Emp/>}></Route>
-          <Route path='/users' element={<Emp/>}></Route>
+          <Route path='/users' element={<Users/>}></Route>
       </Routes>
     </div>
   );

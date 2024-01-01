@@ -1,25 +1,26 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 function Navb() {
     return (
         <div className="nv">
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href=""><h3 className="logo">Firebase CRUD</h3></Navbar.Brand>
-                    <Nav>
-                        <div className="navItem d-flex justify-content-around p-2">
-                            <Nav.Link href="/user">USERS</Nav.Link>
-                            <Nav.Link href="/">EMPLOYEE</Nav.Link>
-                        </div>
-                    </Nav>
+                    <Navbar.Brand href=""><h3 className="logo"><span id="cf">F</span>irebase <span id="cf">CRUD</span></h3></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <div className="navItem d-flex justify-content-around p-2">
+                                <Nav.Link href="/users">USERS</Nav.Link>
+                                <Nav.Link href="/">EMPLOYEE</Nav.Link>
+                            </div>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </div>
@@ -27,4 +28,3 @@ function Navb() {
 }
 
 export default Navb;
-
