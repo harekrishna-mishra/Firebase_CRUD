@@ -5,7 +5,6 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import PopupEmp from "./PopupEmp";
 
 import { useState } from 'react';
-import Form from 'react-bootstrap/Form';
 
 function Title() {
 
@@ -27,21 +26,7 @@ function Title() {
         setPopup(false)
     }
 
-    const Popover = (
-                <Form noValidate validated={validated} /* onSubmit={handleSubmit} */>
-                    <div className="popup">
-                        <div className=" container form_pp row d-flex flex-column p-5">
-                            <button className="cancel">Cancel</button>
-                            <h2 className="for_font">Add Employee</h2>
-                            <input placeholder="Emp Id" className="my-2 for_font "></input>
-                            <input placeholder="Emp Name" className="my-2 for_font "></input>
-                            <input placeholder="Emp Email" className="my-2 for_font "></input>
-                            <input placeholder="Emp Salary" className="my-2 for_font "></input>
-                            <button id="sbmt" className="for_font btn my-3" type="submit" onClick={Frm}>Submit form</button>
-                        </div>  
-                    </div>
-                </Form>
-    );
+    
     return (
         <div className="container-fluid my-2">
             <div className="title">

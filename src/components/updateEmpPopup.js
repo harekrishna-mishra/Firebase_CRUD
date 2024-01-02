@@ -4,7 +4,7 @@ import EmployeeServices from "../services/Employee.Services";
 import Alert from 'react-bootstrap/Alert';
 import { useSelector } from 'react-redux';
 
-function PopupEmp({FrmDis}){
+function UpdateEmpPopup({FrmDis}){
     const [empId, setEmpId]= useState();
     const [empName, setEmpName]= useState("");
     const [empEmail, setEmpEmail]= useState("");
@@ -15,6 +15,12 @@ function PopupEmp({FrmDis}){
 
     const employee = useSelector((state)=> state.employees)
     
+    useState(()=>{
+        setEmpId(employee.employees.empId)
+        setEmpName(employee.employees.empName)
+        setEmpEmail(employee.employees.empEmail)
+        setEmpSalary(employee.employees.empSalary)
+    },[])
 
     const dis=()=>{
         FrmDis()
@@ -39,8 +45,8 @@ function PopupEmp({FrmDis}){
         }
         console.log(nEmp)
        try{
-         EmployeeServices.addEmployee(nEmp)
-         setmessage({error:false, msg:"New Employee added successfully"})
+         EmployeeServices.updateEmployee(employee.employees.id,nEmp)
+         setmessage({error:false, msg:"Employee updated successfully"})
        }catch(err){
             setmessage({error:true, msg: err.message})
             setTimeout(alt, 2000)
@@ -78,14 +84,14 @@ function PopupEmp({FrmDis}){
                             <div className="cnl">
                                 <button className="cancel" onClick={dis}>Cancel</button>
                             </div>
-                            <h2 className="for_font">Add Employee</h2>
+                            <h2 className="for_font">Update Employee</h2>
                             <input onChange={(e)=>{setEmpId(e.target.value)}} value={empId} placeholder="Emp Id" className="my-2 for_font "></input>
                             <input onChange={(e)=>{setEmpName(e.target.value)}} value={empName} placeholder="Emp Name" className="my-2 for_font "></input>
                             <input onChange={(e)=>{setEmpEmail(e.target.value)}} value={empEmail} placeholder="Emp Email" className="my-2 for_font "></input>
                             <input onChange={(e)=>{setEmpSalary(e.target.value)}} value={empSalary} placeholder="Emp Salary" className="my-2 for_font "></input>
                             <div className="parent">
                                 <div>
-                                <button id="sbmt"  className="for_font btn my-3" type="Submit">Submit</button>
+                                <button id="sbmt"  className="for_font btn my-3" type="Submit">Update</button>
                                 </div>
                             </div>
                         </div>  
@@ -94,4 +100,4 @@ function PopupEmp({FrmDis}){
         </div>
     )
 }
-export default PopupEmp;
+export default UpdateEmpPopup;

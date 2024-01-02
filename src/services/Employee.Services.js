@@ -4,9 +4,9 @@ import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from "
 
 const EmployeeCollectionRef= collection( db, "employee")
 class EmployeeServices {
-
     addEmployee = (newEmp)=>{
-        return addDoc=(EmployeeCollectionRef, newEmp)
+        console.log(newEmp)
+        return addDoc(EmployeeCollectionRef, newEmp)
     };
 
     updateEmployee = (id, updatedEmp)=>{
@@ -16,7 +16,7 @@ class EmployeeServices {
 
     deleteEmployee = (id)=>{
         const existEmp = doc(db, "employee", id);
-        return deleteDoc()
+        return deleteDoc(existEmp)
     };
 
     getAllEmployee = ()=>{
