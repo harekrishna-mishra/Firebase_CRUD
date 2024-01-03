@@ -1,25 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import PopupUser from "./PopupUser";
 
 import { useState } from 'react';
-import Form from 'react-bootstrap/Form';
 
 function Title() {
 
     const [validated, setValidated] = useState(false);
     const [popup, setPopup]= useState(false)
 
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
-    }
     const Frm= ()=>{
         setPopup(true)
     }

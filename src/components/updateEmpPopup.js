@@ -4,7 +4,7 @@ import EmployeeServices from "../services/Employee.Services";
 import Alert from 'react-bootstrap/Alert';
 import { useSelector } from 'react-redux';
 
-function UpdateEmpPopup({FrmDis}){
+function UpdateEmpPopup({FrmDis , getEmp}){
     const [empId, setEmpId]= useState();
     const [empName, setEmpName]= useState("");
     const [empEmail, setEmpEmail]= useState("");
@@ -27,12 +27,15 @@ function UpdateEmpPopup({FrmDis}){
     }
 
     const handleSubmit= async (e)=>{
+        setTimeout(FrmDis,500)
+        getEmp()
         e.preventDefault()
         setAlrt(true)
         function alt(){
             setAlrt(false)
         }
         setTimeout(alt, 2000)
+
         if(empId === "" || empName === "" || empEmail === "" || empSalary === ""){
             setmessage({error:true, msg:"All fields are mindatory to fill...!"})
             return;
@@ -85,10 +88,10 @@ function UpdateEmpPopup({FrmDis}){
                                 <button className="cancel" onClick={dis}>Cancel</button>
                             </div>
                             <h2 className="for_font">Update Employee</h2>
-                            <input onChange={(e)=>{setEmpId(e.target.value)}} value={empId} placeholder="Emp Id" className="my-2 for_font "></input>
-                            <input onChange={(e)=>{setEmpName(e.target.value)}} value={empName} placeholder="Emp Name" className="my-2 for_font "></input>
-                            <input onChange={(e)=>{setEmpEmail(e.target.value)}} value={empEmail} placeholder="Emp Email" className="my-2 for_font "></input>
-                            <input onChange={(e)=>{setEmpSalary(e.target.value)}} value={empSalary} placeholder="Emp Salary" className="my-2 for_font "></input>
+                            <input /* onChange={(e)=>{setEmpId(e.target.value)}} */ value={empId} placeholder="Emp Id"  className="my-2 for_font "></input>
+                            <input onChange={(e)=>{setEmpName(e.target.value)}} value={empName} placeholder="Emp Name" type="text" className="my-2 for_font "></input>
+                            <input onChange={(e)=>{setEmpEmail(e.target.value)}} value={empEmail} placeholder="Emp Email" type="email" className="my-2 for_font "></input>
+                            <input onChange={(e)=>{setEmpSalary(e.target.value)}} value={empSalary} placeholder="Emp Salary" type="number" className="my-2 for_font "></input>
                             <div className="parent">
                                 <div>
                                 <button id="sbmt"  className="for_font btn my-3" type="Submit">Update</button>

@@ -9,13 +9,15 @@ import { Store } from "./store/Store";
 
 function App() {
   return (
-    <div className="container">
+    <div className="">
       <Provider store={Store}>
         <Navb />
+        <div className="container">
         <Routes>
           <Route path="/" element={<Emp />}></Route>
           <Route path="/users" element={<Users />}></Route>
         </Routes>
+        </div>
       </Provider>
     </div>
   );
