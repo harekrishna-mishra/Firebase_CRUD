@@ -4,7 +4,7 @@ import EmployeeServices from "../services/Employee.Services";
 import Alert from 'react-bootstrap/Alert';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
-import { addEmployee } from "../features/renderEmpslice";
+import { addEmployee } from "../store/features/renderEmpslice";
 
 function PopupEmp({FrmDis}){
     const [empId, setEmpId]= useState(Number);
@@ -50,10 +50,12 @@ function PopupEmp({FrmDis}){
             empSalary
         }
         console.log(nEmp)
+        //regex for name input
+        const nameRegex = /^[a-zA-Z\s]+$/;
        try{
          if(empId == 0) {
             setmessage({error:true, msg:"EmpId can not be 0...!"})
-         } else if(empName.includes("1")){
+         } else if(!empName.match(nameRegex)){
                 setmessage({error:true, msg:"Employee Name can not include number...!"})
             }
          else{

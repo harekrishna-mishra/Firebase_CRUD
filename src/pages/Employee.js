@@ -9,7 +9,7 @@ import Alert from 'react-bootstrap/Alert';
 
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateEmployee } from '../features/employeeSlice';
+import { updateEmployee } from '../store/features/employeeSlice';
 
 
 function Emp() {
