@@ -21,7 +21,7 @@ function Title() {
         <div className="container-fluid my-2">
             <div className="title">
                 <div className="d-flex justify-content-around">
-                    <h3 className="for_font my-2">All User</h3>
+                    <h3 className="for_font my-2">All Users</h3>
                     <button onClick={()=>setPopup(true)} className="btn my-2">Add User</button>
                     {
                         popup ? <PopupUser FrmDis={FrmDis}/> : ""

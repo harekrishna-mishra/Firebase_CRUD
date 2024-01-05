@@ -28,7 +28,7 @@ function Title() {
 
     
     return (
-        <div className="container-fluid my-2">
+        <div className="container my-2 title1 ">
             <div className="title">
                 <div className="d-flex justify-content-around">
                     <h3 className="for_font my-2">All Employees</h3>
