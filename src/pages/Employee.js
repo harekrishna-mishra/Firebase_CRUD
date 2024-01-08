@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
 import Title from "../components/TitleEmp";
 import EmployeeServices from "../services/Employee.Services";
-import UpdateEmpPopup from "../components/updateEmpPopup";
+/* import UpdateEmpPopup from "../components/updateEmpPopup"; */
 import DeletePopup from "../components/DeletePopup";
 import Alert from "react-bootstrap/Alert";
-
+import UpdateEmpPopup from "../components/updateEmployeePopup";
+import Employee from "../section/Employee";
 import { useSelector, useDispatch } from "react-redux";
 import { updateEmployee } from "../store/features/employeeSlice";
+import Card from "react-bootstrap/Card";
 
 function Emp() {
   const [emps, setEmps] = useState([]);
@@ -15,7 +16,10 @@ function Emp() {
   const [deletePopup, setDeletePopup] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const [alrt, setAlrt] = useState(false);
-  const [err, setErr] = useState({ error: false, message: "Error 404 not found...!" });
+  const [err, setErr] = useState({
+    error: false,
+    message: "Error 404 not found...!",
+  });
 
   const employee = useSelector((state) => state.newEmployees);
   const dispatch = useDispatch();
@@ -73,13 +77,11 @@ function Emp() {
   return (
     <div>
       {alrt ? (
-        <div id="popup">
-          <div className="alert">
-            <Alert variant="success">
-              <p>Deleted successfully...!</p>
+          <div className="container">
+            <Alert className="alrtt" variant="success">
+              <p>All Employee data deleted successfully...!</p>
             </Alert>
           </div>
-        </div>
       ) : (
         ""
       )}
@@ -92,75 +94,67 @@ function Emp() {
           </div>
         </div>
       ) : (
-        <div className="tbl">
-        <Title />
-        <Table striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>EMP ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>SALARY</th>
-              <th>EDIT</th>
-              <th>DELETE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {emps.map((e, i) => {
-              return (
-                <tr key={i}>
-                  <td>{e.empId}</td>
-                  <td>{e.empName}</td>
-                  <td>{e.empEmail}</td>
-                  <td>{e.empSalary}</td>
-                  <td>
-                    <button
-                      onClick={(et) => {
-                        popupset();
-                        editHandler(e);
-                      }}
-                      id="sbmt"
-                      className="for_font btn my-3"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={(et) => {
-                        deleteHandler(e.id);
-                      }}
-                      id="sbmt"
-                      className="for_font btn my-3"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-        </div>
+        <>
+          <Title />
+          <div className="container allEmployee">
+            <div className="row">
+              {emps.map((e, i) => {
+                return (
+                  <div key={i} className=" my-2 col-xl-4 col-lg-6 col-md-6">
+                    <Employee data={e} />
+                    <Card className="crd">
+                      <Card.Body>
+                      <div className="d-flex flex-direction-column justify-content-around">
+                        <div className=" px-1">
+                          <button
+                          onClick={(et) => {
+                            popupset();
+                            editHandler(e);
+                          }}
+                          id="sbmt"
+                          className=" btn_edit for_font btn my-3"
+                        >
+                          Edit
+                        </button>
+                        </div>
+                        <div className=" px-1">
+                          <button
+                          onClick={(et) => {
+                            deleteHandler(e.id);
+                          }}
+                          id="sbmt"
+                          className="btn_del for_font btn my-3"
+                        >
+                          Delete
+                        </button>
+                        </div>
+                    </div>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
       )}
-      
-        {popup ? (
-          <UpdateEmpPopup submit={"submit"} FrmDis={FrmDis} getEmp={getEmp} />
-        ) : (
-          ""
-        )}
 
-        {deletePopup ? (
-          <DeletePopup
-            getEmp={getEmp}
-            deleteId={deleteId}
-            forDelete={forDelete}
-            deletePopupDisable={deletePopupDisable}
-          />
-        ) : (
-          ""
-        )}
-      
+      {popup ? (
+        <UpdateEmpPopup submit={"submit"} FrmDis={FrmDis} getEmp={getEmp} />
+      ) : (
+        ""
+      )}
+
+      {deletePopup ? (
+        <DeletePopup
+          getEmp={getEmp}
+          deleteId={deleteId}
+          forDelete={forDelete}
+          deletePopupDisable={deletePopupDisable}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -12,7 +12,7 @@ function App() {
     <div className="">
       <Provider store={Store}>
         <Navb />
-        <div className="container">
+        <div className="">
         <Routes>
           <Route path="/" element={<Emp />}></Route>
           <Route path="/users" element={<Users />}></Route>

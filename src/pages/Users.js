@@ -6,7 +6,7 @@ function Users() {
     return (
         <div>
             <Title />
-            <Table striped bordered hover variant="dark">
+            <Table className="container" striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>#</th>

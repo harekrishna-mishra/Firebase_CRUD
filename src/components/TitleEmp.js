@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import PopupEmp from "./PopupEmp";
+import AddEmpForm from "../components/AddEmpForm";
 
 import { useState } from 'react';
 
@@ -28,13 +29,14 @@ function Title() {
 
     
     return (
-        <div className="container my-2 title1 ">
-            <div className="title">
+        <div className="my-2 title1 ">
+            <div className="title p-1">
                 <div className="d-flex justify-content-around">
                     <h3 className="for_font my-2">All Employees</h3>
                     <button onClick={()=>setPopup(true)} className="btn my-2">Add Employee</button>
                     {
-                        popup ? <PopupEmp FrmDis={FrmDis}/> : ""
+                        /* popup ? <PopupEmp FrmDis={FrmDis}/> : "" */
+                        popup ? <AddEmpForm FrmDis={FrmDis}/> : ""
                     }
                 </div>
             </div>
