@@ -79,7 +79,7 @@ function Emp() {
       {alrt ? (
           <div className="container">
             <Alert className="alrtt" variant="success">
-              <p>All Employee data deleted successfully...!</p>
+              <p>Particular Employee data deleted successfully...!</p>
             </Alert>
           </div>
       ) : (

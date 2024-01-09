@@ -260,3 +260,9 @@ input{
 .for_font{
   font-weight: 800;
 }
+.footer{
+  background-color: #f9f7ff !important;
+  color: black;
+  box-shadow: 0px 0px 5px gray;
+  margin-top: 1rem;
+}

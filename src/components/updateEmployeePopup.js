@@ -8,28 +8,23 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function UpdateEmpPopup({ FrmDis, getEmp }) {
-  const form = useForm();
-  const { register, control, handleSubmit, formState } = form;
-  const { errors } = formState;
-  const [message, setMessage] = useState({ error: false, msg: "" });
   const employee = useSelector((state) => state.employees);
-  const [alrt, setAlrt] = useState(false);
-  const [empData, setEmpData] = useState({
-    empId: employee.employees.empId,
+  const form = useForm({
+    defaultValues:{
+      empId: employee.employees.empId,
     empName: employee.employees.empName,
     empEmail: employee.employees.empEmail,
     empSalary: employee.employees.empSalary,
+    }
   });
-
+  const { register, control, handleSubmit, formState } = form;
+  const { errors } = formState;
+  const [message, setMessage] = useState({ error: false, msg: "" });
+  
+  const [alrt, setAlrt] = useState(false);
   const dis = () => {
     FrmDis();
   };
-  useEffect(() => {
-    setEmpData({
-      empId: employee.employees.empId,
-    });
-    console.log(" edit emp data ", employee.employees.empName);
-  });
 
   const onSubmit = async (data) => {
     getEmp();
@@ -51,23 +46,6 @@ function UpdateEmpPopup({ FrmDis, getEmp }) {
   };
   return (
     <div>
-      {/* {alrt ? (
-        <div id="popup">
-          <div className="alert">
-            {message?.msg && (
-              <Alert
-                variant={message?.error ? "danger" : "success"}
-                dismissible
-                onClose={() => setMessage("")}
-              >
-                {message?.msg}
-              </Alert>
-            )}
-          </div>
-        </div>
-      ) : (
-        ""
-      )} */}
       <div className="popup">
         <div className="container form_pp p-5">
           <div className="container">
@@ -103,19 +81,15 @@ function UpdateEmpPopup({ FrmDis, getEmp }) {
               type="number"
               className="my-1"
               id="empId"
-              {...register("empId", {
+              /* {...register("empId", {
                 required: { value: true, message: "required to fill" },
-              })}
+              })} */
             ></input>
             {/* displaying error  */}
             <p id="errorMess">{errors.empId?.message}</p>
 
             {/* <label htmlFor="empId">Name</label> */}
             <input
-              onChange={(e) => {
-                setEmpData.empName(e.target.value);
-              }}
-              value={empData.empName}
               placeholder="Emp Name"
               className="my-1"
               type="text"
@@ -133,10 +107,6 @@ function UpdateEmpPopup({ FrmDis, getEmp }) {
 
             {/*  <label htmlFor="empId">Email</label> */}
             <input
-              onChange={(e) => {
-                setEmpData.empEmail(e.target.value);
-              }}
-              value={empData.empEmail}
               placeholder="Emp Email"
               className="my-1"
               type="email"
@@ -154,10 +124,6 @@ function UpdateEmpPopup({ FrmDis, getEmp }) {
 
             {/* <label htmlFor="empId">Salary</label> */}
             <input
-              onChange={(e) => {
-                setEmpData.empSalary(e.target.value);
-              }}
-              value={empData.empSalary}
               placeholder="Emp Salary"
               className="my-1"
               type="number"

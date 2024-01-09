@@ -10,8 +10,8 @@ import { addEmployee } from "../store/features/renderEmpslice";
 
 function AddEmpForm({ FrmDis }) {
   const form = useForm();
-  const { register, control, handleSubmit, formState } = form;
-  const { errors } = formState;
+  const { register, control, handleSubmit, formState,reset } = form;
+  const { errors, isSubmitSuccessful } = formState;
   const [message, setMessage] = useState({ error: false, msg: "" });
   const employee = useSelector((state) => state.employees);
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ function AddEmpForm({ FrmDis }) {
     try {
       setMessage({ error: false, msg: "Employee data added successfully." });
       EmployeeServices.addEmployee(data);
+      reset()
     } catch (err) {
       setMessage({ error: true, msg: err.message });
       setTimeout(alt, 2000);
