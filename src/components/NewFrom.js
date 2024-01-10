@@ -192,11 +192,11 @@ function NewForm() {
                 {...register("empPhone", {
                   required: {
                     value: true,
-                    message: "please enter correct phone number",
+                    message: "please enter phone number",
                   },
                   pattern: {
                     value: /^[0-9 ]+$/,
-                    message: "phone no take number only",
+                    message: "please enter correct phone number",
                   },
                 })}
                 type="number"
