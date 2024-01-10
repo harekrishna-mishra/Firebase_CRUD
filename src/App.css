@@ -1,268 +1,73 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* .addAll{
-  z-index: 1 !important;
-} */
-.navv{
-    min-width: 90vw !important;
-    z-index: 2 !important;
-}
-.logo{
-  font-family: sans-serif;
-  border: 3px solid rgb(0, 0, 0);
-  border-top: none;
-  border-radius: 1rem;
-  padding:0.3rem;
-}
-body{
-  /* background-image: linear-gradient(to bottom right, rgba(71, 20, 20, 0.096), rgba(71, 20, 20, 0.466)) !important;
-  background: cover; */
-  background-color: rgb(255, 255, 255) !important;
-}
-.navItem{
-  display: flex !important;
-  justify-content:space-around!important;
-  margin-right: 3rem !important;
-  font-weight: 700;
-}
-.navItems:hover{
-  color: rgba(71, 20, 20, 0.863) !important;
-  text-decoration: underline;
-  text-decoration-thickness: 15%;
-}
-
-.title{
-  border-radius: 0.2rem;
-  background-color: #f9f7ff !important;
-  font-family: sans-serif;
-  color: rgba(71, 20, 20, 0.863);
-  box-shadow: 0px 3px 5px rgb(161, 161, 161);
-}
-.btn{
-  background-color:rgba(71, 20, 20, 0.863) !important;
-  color: white !important;
-  border-radius: 2rem !important;
-  max-width: 12rem !important;
-  min-width: 9rem;
-}
-.btn:active{
-  background-color: black !important;
-}
-.btn:hover{
-  transition:  0.17s;
-  transform:scale(1.1,1.1);
-}
-.head{
-  /* background-color: rgb(236, 236, 236); */
-  width: auto;
-  margin: 40%;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: black;
-}
-input{
-  padding: 0.8em 3rem !important;
-  border-bottom: 1px solid black !important;
-  background-color: rgb(255, 255, 255);
-  border: none;
-  
-}
-.popup{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(1px);
-  z-index: 1 !important;
-}
-.popupErr{
-  margin-top: 20vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  display: flex;
-  
-}
-.form_pp{
-  filter: none !important;
-  max-height: 90vh;
-  margin-top: 15vh !important;
-  max-width: 37rem !important;
-  background-color: rgb(255, 255, 255);
-  box-sizing: border-box;
-  border-radius: 1rem;
-  box-shadow: 0px 1px 7px rgb(41, 41, 41);
-  z-index: 1 !important;
-}
-#sbmt{
-  border-radius: 2rem;
-}
-.parent{
-  display: flex;
-  justify-content: center;
-}
-.cnl{
-  display: flex;
-  justify-content: end;
-  align-items: end;
-}
-.cancel{
-  background-color: transparent;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.2rem 0.5rem;
-}
-.cancel:active{
-  color: white;
-  background-color: black;
-}
-#cf{
-  color: rgba(71, 20, 20, 0.863);
-  font-size: xx-large;
-  font-weight: bolder;
-}
-
-.alert{
-  z-index: 2 !important;
-  position: fixed !important;
-  top: 15vh;
-  left: calc(100% - 25rem);
-  max-width: 25rem;
-}
-@media only screen and (max-width: 600px) {
-  #popup{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% auto;
-    height: 100% auto;
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-
-  .alert{
-    justify-content: center !important;
-    z-index: 2 !important;
-    position: fixed !important;
-    left: 0.1vw;
-    top: 15vh;
-    min-width: 100% !important;
-  }
-}
-#popup{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% auto;
-  height: 100% auto;
-  background-color: rgba(0, 0, 0, 0);
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  z-index: 1 !important;
-}
-label{
-  font-weight: bold;
-  display: flex;
-  margin-bottom: 5px;
-}
 input{
   display: block;
-  width: 100%;
 }
-#errorMess{
-  margin: 0;
-  padding: 0;
-  color: red;
-  font-size: 0.9rem;
-}
-.allEmployee{
-  z-index: 0 !important;
-}
-.crd{
-  border-radius: 0px !important;
-  border: 1px solid rgb(184, 184, 184) !important;
-  border-bottom-left-radius: 12px !important;
-  /* background-image: linear-gradient(to bottom right, rgba(71, 20, 20, 0.096), rgba(71, 20, 20, 0.466)) !important;
-  background: cover;  */
-}
-.crd1{
-  border-radius: 0px !important;
-  border: none !important;
-  border-top-right-radius: 12px !important;
-  background-image: linear-gradient(to bottom right, rgba(71, 20, 20, 0.151), rgba(44, 133, 81, 0.582)) !important;
-  background: cover; 
-  color: black !important;
+.heading{
   text-align: center;
 }
-.btn_del{
-  background-color: rgb(150, 0, 0) !important;
-  border: 1px solid transparent !important;
-  color: white !important;
+
+/* .form{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+} */
+input{
+  padding: 0.5rem 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  margin: 5px !important;
+}
+.inputSkill{
+  width: 43%;
+}
+select{
+  padding: 0.6rem 7.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  margin: 5px !important;
+  text-align: left;
 }
 
-.btn_edit{
-  background-color: rgba(71, 20, 20, 0.863) !important;
-  color: white !important;
-  border: 1px solid transparent !important;
+.btn_div{
+  display: flex;
+  justify-content: center;
 }
-.for_font{
-  font-weight: 800;
+.btnbtn{
+  padding: 0.4rem 2rem;
+  background-color: aqua;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-family: sans-serif;
 }
-.footer{
-  background-color: #f9f7ff !important;
+#btnbtn{
+  padding: 0.4rem 2rem;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-family: sans-serif;
+  color: white;
+}
+p{  
+  position: relative;
+  color: red;
+  font-size:small;
+  margin-left: 2rem;
+}
+.form_data{
+  height: 90vh;
+  width: 50%;
+  background-color: rgb(228, 228, 228);
+  border-radius: 1rem;
+}
+.data{
+  font-size: larger;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: rgb(0, 0, 158);
+}
+.temp{
   color: black;
-  box-shadow: 0px 0px 5px gray;
-  margin-top: 1rem;
 }
