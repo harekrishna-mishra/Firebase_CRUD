@@ -5,7 +5,8 @@ import { DevTool } from "@hookform/devtools";
 import { json } from "react-router-dom";
 
 function NewForm() {
-  const form = useForm({ mode:"onChange",
+  const form = useForm({
+    mode: "onChange",
     defaultValues: {
       empName: "",
       empEmail: "",
@@ -16,16 +17,16 @@ function NewForm() {
       empAddress: "",
     },
   });
-  
+
   const { register, control, handleSubmit, formState, reset } = form;
-  const { errors, isValid,  isDirty, dirtyFields } = formState;
+  const { errors, isValid, isDirty, dirtyFields } = formState;
 
   const { fields, append, remove } = useFieldArray({
     name: "empSkill",
     control,
   });
   const [empData, setEmpData] = useState([]);
-  const [empSkillData, setEmpSkillData] = useState([]);
+ 
 
   const options = [
     { value: "", label: "Gender" },
@@ -33,16 +34,14 @@ function NewForm() {
     { value: "male", label: "Male" },
   ];
 
+  console.log(empData);
   const onSubmit = async (data) => {
     setEmpData(data);
-    const empSkillDataConst = data.empSkill;
-    setEmpSkillData(empSkillDataConst);
-    console.log("all data = ",empData)
-    reset()
+    reset();
   };
   return (
     <div className="container">
-      <div className="row d-flex justify-content-between">
+      <div className="row d-flex justify-content-center">
         <form
           className=" my-3 p-2 form_data col-lg-6 col-md-6 col-sm-12 mx-3 form"
           onSubmit={handleSubmit(onSubmit)}
@@ -87,7 +86,7 @@ function NewForm() {
               <p>{errors.empEmail?.message}</p>
 
               <input
-                {...register("empPosition",{
+                {...register("empPosition", {
                   required: {
                     value: true,
                     message: "require to fill",
@@ -122,27 +121,21 @@ function NewForm() {
               <p>{errors.empSalary?.message}</p>
 
               <select
+                className="container"
                 placeholder="gender"
                 {...register("empGender", {
                   required: {
                     value: true,
                     message: "require to select",
                   },
-                  /* pattern: {
-                  value: /^[a-zA-Z ]+$/,
-                  message: "position take alphabet only",
-                }, */
                 })}
               >
                 select Gender
-                {
-                  options.map((option)=>(
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                  ))
-                }
-                {/* <option value={""}>gender</option>
-                <option value={"male"}>Male</option>
-                <option value={"female"}>Female</option> */}
+                {options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
               {/* dispalying error */}
               <p>{errors.empGender?.message}</p>
@@ -221,7 +214,7 @@ function NewForm() {
                 type="number"
                 placeholder="Phone"
               ></input>
-              
+
               <p>{errors.empPhone?.message}</p>
             </div>
             <div className="btn_div">
@@ -256,16 +249,15 @@ function NewForm() {
             </div>
             <div className=" d-flex data my-3">
               <span className="temp">Skills:</span>
-              {
-              empSkillData.map((e, index, id) => {
-                return (
-                  <>
-                    <div key={id} className="">
-                      <span key={id} className="temp">-Skill_{index}</span>:-{e.skill}
-                    </div>
-                  </>
-                );
-              })}
+              {Array.isArray(empData.empSkill) &&
+                empData.empSkill.map((e, index) => (
+                  <div key={index} className="">
+                    <span key={index} className="temp">
+                      -Skill_{index}
+                    </span>
+                    :-{e.skill}
+                  </div>
+                ))}
             </div>
             <div className="data my-3">
               <span className="temp">Address:</span>
