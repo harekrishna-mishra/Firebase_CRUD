@@ -260,7 +260,7 @@ function NewForm() {
                 return (
                   <>
                     <div key={id} className="">
-                      <span className="temp">-Skill_{index}</span>:-{e.skill}
+                      <span key={id} className="temp">-Skill_{index}</span>:-{e.skill}
                     </div>
                   </>
                 );
