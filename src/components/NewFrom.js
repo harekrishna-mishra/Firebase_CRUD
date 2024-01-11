@@ -18,7 +18,7 @@ function NewForm() {
   });
   
   const { register, control, handleSubmit, formState, reset } = form;
-  const { errors, isValid, isDirty, dirtyFields } = formState;
+  const { errors, isValid,  isDirty, dirtyFields } = formState;
 
   const { fields, append, remove } = useFieldArray({
     name: "empSkill",
@@ -38,6 +38,7 @@ function NewForm() {
     const empSkillDataConst = data.empSkill;
     setEmpSkillData(empSkillDataConst);
     console.log("all data = ",empData)
+    reset()
   };
   return (
     <div className="container">
