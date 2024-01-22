@@ -48,12 +48,17 @@
     min-width: 90vw !important;
     z-index: 2 !important;
 }
+
 .logo{
-  font-family: sans-serif;
-  border: 3px solid rgb(0, 0, 0);
-  border-top: none;
-  border-radius: 1rem;
-  padding:0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'FontAwesome';
+  font-weight: 700;
+  font-size:x-large;
+  padding: 0px 1rem;
+  border: none !important;
+  color: rgb(48, 0, 0);
 }
 body{
   /* background-image: linear-gradient(to bottom right, rgba(71, 20, 20, 0.096), rgba(71, 20, 20, 0.466)) !important;
@@ -63,7 +68,6 @@ body{
 .navItem{
   display: flex !important;
   justify-content:space-around!important;
-  margin-right: 3rem !important;
   font-weight: 700;
 }
 .navItems:hover{
@@ -93,6 +97,11 @@ body{
   transition:  0.17s;
   transform:scale(1.1,1.1);
 }
+/* #login{
+  background-color: transparent !important;
+  color: rgba(71, 20, 20, 0.863) !important;
+  border: 1px solid rgba(71, 20, 20, 0.863) !important;
+} */
 .head{
   /* background-color: rgb(236, 236, 236); */
   width: auto;
@@ -266,3 +275,35 @@ input{
   box-shadow: 0px 0px 5px gray;
   margin-top: 1rem;
 }
+.login-div{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+@media screen and (max-width: 992px) {
+  .login-div {
+    display: flex  !important;
+    justify-content: space-around !important;
+  }
+}
+a{
+  text-decoration: none !important;
+}
+.link-btn{
+  background-color: transparent;
+  border: none;
+  color: rgb(0, 0, 158);
+}
+.porfile-icon{
+  padding: 0.4rem 0.6rem;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50%;
+  /* background: linear-gradient(to bottom right, rgba(71, 20, 20, 0.151), rgba(44, 133, 81, 0.582)) !important; */
+}
+.pfl{
+  border: none;
+  background-color: transparent;
+}
+
+

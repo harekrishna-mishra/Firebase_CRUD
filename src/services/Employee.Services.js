@@ -1,8 +1,12 @@
-import {db} from "../firebase/FirebaseConfig"
+import {getFirestore} from "firebase/firestore"
+import { app } from "../firebase/FirebaseConfig"
+
 import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore"
 
+const db = getFirestore(app)
 
 const EmployeeCollectionRef= collection( db, "employee")
+
 class EmployeeServices {
     addEmployee = (newEmp)=>{
         console.log(newEmp)
