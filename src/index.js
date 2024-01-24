@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { FirebaseContext } from './services/firebaseAuth/context/Firebase';
+import { FirebaseProvider } from './services/firebaseAuth/context/Firebase';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -9,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+        <FirebaseProvider>
+          <App/>
+        </FirebaseProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

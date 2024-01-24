@@ -5,6 +5,7 @@ import Alert from "react-bootstrap/Alert";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/FirebaseConfig";
+import AuthServices from '../services/Firebase.Auth';
 
 function SignUp({ FrmDisSignUp }) {
   const auth = getAuth(app);
@@ -30,13 +31,13 @@ function SignUp({ FrmDisSignUp }) {
     }
     setTimeout(alt, 2000);
     try {
-      await createUserWithEmailAndPassword(
-        auth,
+      await AuthServices.signUpUser(
         data.empEmail,
         data.empPassword
       ).then((value) => console.log(value));
       setMessage({ error: false, msg: "Sign Up successfully." });
       reset();
+      dis()
     } catch (err) {
       setMessage({ error: true, msg: err.message });
       setTimeout(alt, 2000);
@@ -102,6 +103,8 @@ function SignUp({ FrmDisSignUp }) {
                 },
               })}
             ></input>
+            {/* displaying error  */}
+            <p id="errorMess">{errors.empEmail?.message}</p>
 
             <input
               placeholder="Password"

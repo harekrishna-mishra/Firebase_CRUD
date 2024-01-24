@@ -9,6 +9,7 @@ import Employee from "../section/Employee";
 import { useSelector, useDispatch } from "react-redux";
 import { updateEmployee } from "../store/features/employeeSlice";
 import Card from "react-bootstrap/Card";
+import { useFirebase } from "../services/firebaseAuth/context/Firebase";
 
 function Emp() {
   const [emps, setEmps] = useState([]);
@@ -20,6 +21,7 @@ function Emp() {
     error: false,
     message: "Error 404 not found...!",
   });
+  const firebase = useFirebase()
 
   const employee = useSelector((state) => state.newEmployees);
   const dispatch = useDispatch();
@@ -41,14 +43,23 @@ function Emp() {
 
   const editHandler = (id) => {
     dispatch(updateEmployee(id));
-    console.log("edit emp ", id);
   };
 
   const deleteHandler = async (id) => {
     /* await EmployeeServices.deleteEmployee(id) */
-    setDeleteId(id);
-    getEmp();
-    setDeletePopup(true);
+    if(firebase.token){
+      setDeleteId(id);
+      getEmp();
+      setDeletePopup(true);
+      setErr({error:false, message:"particular employee deleted successfully"})
+    }else{
+      setAlrt(true)
+      function alt(){
+        setAlrt(false)
+      }
+      setTimeout(alt, 2000)
+      setErr({error:false, message:"please login first"})
+    }
   };
 
   const forDelete = async (deleteId) => {
@@ -66,7 +77,16 @@ function Emp() {
   };
 
   const popupset = () => {
-    setPopup(true);
+    if(firebase.token){
+      setPopup(true);
+    }else{
+      setAlrt(true)
+      function alt(){
+        setAlrt(false)
+      }
+      setTimeout(alt, 2000)
+      setErr({error:false, message:"please login first"})
+    }
     console.log(popup);
   };
 
@@ -79,7 +99,10 @@ function Emp() {
       {alrt ? (
           <div className="container">
             <Alert className="alrtt" variant="success">
-              <p>Particular Employee data deleted successfully...!</p>
+              {/* <p>Particular Employee data deleted successfully...!</p> */}
+              {
+                err.message
+              }
             </Alert>
           </div>
       ) : (
@@ -95,7 +118,9 @@ function Emp() {
         </div>
       ) : (
         <>
-          <Title />
+          <div className="container ttl">
+            <Title />
+          </div>
           <div className="container allEmployee">
             <div className="row">
               {emps.map((e, i) => {

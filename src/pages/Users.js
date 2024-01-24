@@ -5,7 +5,9 @@ import Title from "../components/TitleUser";
 function Users() {
     return (
         <div>
-            <Title />
+            <div className="container">
+              <Title/>
+            </div>
             <Table className="container" striped bordered hover variant="dark">
       <thead>
         <tr>
